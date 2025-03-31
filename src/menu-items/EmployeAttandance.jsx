@@ -22,11 +22,11 @@ const icons = {
 
 const utilities = {
   id: 'utilities',
-  title: 'Utilities123',
+  title: 'Utilities',
   type: 'group',
   children: [
     {
-      id: 'util-typography12',
+      id: 'util-typography',
       title: 'Typography',
       type: 'item',
       url: '/typography',

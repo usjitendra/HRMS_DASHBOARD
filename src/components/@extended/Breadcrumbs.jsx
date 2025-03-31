@@ -112,7 +112,7 @@ export default function Breadcrumbs({
         color={window.location.pathname === main.url ? 'text.primary' : 'text.secondary'}
       >
         {icons && <CollapseIcon style={iconSX} />}
-        {main?.title}
+        {"ka ho guru"}
       </Typography>
     );
 
