@@ -4,7 +4,9 @@ import { lazy } from 'react';
 import Loadable from 'components/Loadable';
 import DashboardLayout from 'layout/Dashboard';
 import Employee from '../pages/Employee/Employee';
-
+import EmployeeAdd from '../pages/Employee/EmployeeAdd.jsx';
+import { element } from 'prop-types';
+import EmployeeList from '../pages/Employee/EmployeeList.jsx';
 // render- Dashboard
 const DashboardDefault = Loadable(lazy(() => import('pages/dashboard/default')));
 
@@ -38,6 +40,14 @@ const MainRoutes = {
     {
       path: 'employee',
       element: <Employee/>
+    },
+    {
+      path: 'employee/list',
+      element:<EmployeeList/>
+    },
+    {
+        path:'employee/add',
+        element:<EmployeeAdd/>
     },
     {
       path: 'typography',

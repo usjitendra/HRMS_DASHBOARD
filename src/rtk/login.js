@@ -8,7 +8,8 @@ export const logiDetail = createApi({
 
   endpoints: (builder) => ({
     loginApi: builder.mutation({
-      query: (data) => ({
+      query: (data) => (
+        {
         url: "/admin/login",
         method: "POST",
         data,

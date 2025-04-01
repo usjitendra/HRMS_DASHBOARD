@@ -1,9 +1,9 @@
 import React from 'react'
 import { useGetAllEmployeeQuery } from '../../rtk/employeeApi'
 import TableComponent from '../../helper-component/TableComponent';
-
+import { useNavigate } from 'react-router';
 const Employee = () => {
-   
+   const navigate=useNavigate();
   const {data,isLoading,error}=useGetAllEmployeeQuery()
 
   console.log(data);
@@ -27,10 +27,13 @@ const Employee = () => {
   
     };
   });
-
-
-
-
+  const AddEmployee=async()=>{
+        try{
+          navigate('/employee/add')
+        }catch(err){
+           return console.log(err.message);
+        }
+  }
   //  ----action------- // 
   
 
@@ -45,8 +48,8 @@ const Employee = () => {
         <h2 className="text-2xl font-semibold"></h2>
         <button
           className="bg-blue-600 text-white px-4 py-2 rounded-lg shadow-md hover:bg-blue-700 transition duration-300"
-     
-        >
+          onClick={AddEmployee}
+         >
           Add Employee
         </button>
       </div>

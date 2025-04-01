@@ -16,11 +16,11 @@ export const employeeDetailApi = createApi({
         }), 
 
         addEmployee:builder.mutation({
-            query:(formData)=>({
+            query:(formData)=>(
+                {
                 url:"employee/add",
                 method:"POST",
                 data:formData,
-
             }),
             invalidatesTags:["employee"],
         }),
