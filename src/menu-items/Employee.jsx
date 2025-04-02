@@ -17,14 +17,6 @@ const Employeepages = {
   type: 'group',
   children: [
     {
-      id: 'emptest',
-      title: 'emptest',
-      type: 'item',
-      url: '/employee',
-      icon: icons.LoginOutlined,
-      // target: true
-    },
-    {
       id: 'employee',
       title: 'Employee List',
       type: 'item',

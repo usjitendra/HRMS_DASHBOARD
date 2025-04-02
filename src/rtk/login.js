@@ -1,11 +1,9 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import axiosBaseQuery from "./axiosBaseQuery";
-
 export const logiDetail = createApi({
   reducerPath: "authApi",
   baseQuery: axiosBaseQuery,
   tagTypes: ["babu"],
-
   endpoints: (builder) => ({
     loginApi: builder.mutation({
       query: (data) => (

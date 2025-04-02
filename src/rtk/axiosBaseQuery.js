@@ -2,8 +2,8 @@ import { toast } from "sonner";
 import axios from "axios";
 
 export const axiosInstance = axios.create({
-  baseURL: "http://localhost:6002/api/v1",
-  // baseURL: "https://hr-management-codecrafter.onrender.com/api/v1",
+  // baseURL: "http://localhost:6002/api/v1",
+  baseURL: "https://hr-management-codecrafter-1.onrender.com/api/v1",
   headers: {
     "Content-Type": "application/json",
   },
@@ -20,13 +20,13 @@ const axiosBaseQuery = async ({ url, method, data }) => {
         ? { data, headers: { "Content-Type": "multipart/form-data" } } 
         : { data }),
     });
-    // console.log(response);
+    console.log(response);
 
     if (response?.data?.message) {
       toast.success(response.data.message);
     }
 
-    console.log({data:method});
+
     
 
     return { data: method === "GET" ? response?.data?.data : response?.data };

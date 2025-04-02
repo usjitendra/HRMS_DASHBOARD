@@ -32,10 +32,12 @@ export const employeeDetailApi = createApi({
             invalidatesTags:["employee"],
          }) ,
           employeeEdit:builder.mutation({
-            query:({id,data})=>({
+            query:({id,formData})=>(
+                   console.log("rtk",id),
+                {
                 url:`employee/update/${id}`,
                 method:"PUT",
-                data
+                data:formData
             }),
             invalidatesTags:["employee"],
         }),
