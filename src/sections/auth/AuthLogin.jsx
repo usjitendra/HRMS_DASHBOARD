@@ -20,6 +20,7 @@ import AnimateButton from 'components/@extended/AnimateButton';
 import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
 import { useIsLoginQuery, useLoginApiMutation } from '../../rtk/login';
 import { useNavigate } from 'react-router-dom';
+import { ClipLoader } from 'react-spinners';
 
 export default function AuthLogin() {
   const [data, setData] = useState({ email: 'codecrafter@gmail.com', password: 'Cc@12345c', role: '', checked: false });
@@ -27,7 +28,7 @@ export default function AuthLogin() {
   const navigate = useNavigate();
   const handleChange = (e) => setData({ ...data, [e.target.name]: e.target.value });
   const handleToggle = () => setShowPassword((prev) => !prev);
-  const [loginApi] = useLoginApiMutation();
+  const [loginApi,isLoginLoading] = useLoginApiMutation();
   const { data: isLoginData, isLoading, error } = useIsLoginQuery();
 
   const login = async () => {
@@ -54,8 +55,25 @@ export default function AuthLogin() {
     }
   }, [isLoginData, isLoading, navigate]);
 
-  console.log(isLoginData);
+  console.log("loader++",isLoading);
+
+
   
+  if(isLoading){
+    return(
+      <div className='flex justify-center items-center h-screen'>
+        <ClipLoader color="blue" size={30}/>
+      </div>
+    )
+  }
+
+  if(isLoginData){
+    return(
+      <div className='flex justify-center items-center h-screen'>
+         <ClipLoader color='blue' size={30}/>
+      </div>
+    )
+  }
 
   return (
     <div>

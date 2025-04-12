@@ -70,6 +70,10 @@ export default function Profile() {
     setValue(newValue);
   };
 
+  const profileLogout=async()=>{
+       console.log("sdsd")
+  }
+
   return (
     <Box sx={{ flexShrink: 0, ml: 0.75 }}>
       <ButtonBase
@@ -131,9 +135,9 @@ export default function Profile() {
                         </Stack>
                       </Grid>
                       <Grid>
-                        <Tooltip title="Logout">
-                          <IconButton size="large" sx={{ color: 'text.primary' }}>
-                            <LogoutOutlined />
+                        <Tooltip   title="Logout">
+                          <IconButton size="large" sx={{ color: 'text.primary' }} onClick={() => profileLogout()}>
+                            <LogoutOutlined  onClick={() => profileLogout()}/>
                           </IconButton>
                         </Tooltip>
                       </Grid>

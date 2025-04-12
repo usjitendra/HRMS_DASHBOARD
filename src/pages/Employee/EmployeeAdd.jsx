@@ -18,13 +18,17 @@ const EmployeeAdd = () => {
     {
       name:"",
       email:"",
-      password:"",
+      workEmail:"",
       mobile:"",
-      role:"",
-      department:"",
-      designation:"",
-      salary:"",
-      joiningDate:"",
+      dob:"",
+      gender:"",
+      address:"",
+      city:"",
+      state:"",
+      qualification:"",
+      experience:"",
+      maritalStaus:"",
+      password:"",
       photo:"",
     }
   )
@@ -35,12 +39,17 @@ const EmployeeAdd = () => {
             ...prev,
           name:employeeData.name,
           email:employeeData.email,
-          password:employeeData.password||"",
-          mobile:employeeData.phone,
-          role:employeeData.role,
-          department:employeeData.department,
-          designation:employeeData.designation,
-          salary:employeeData.salary,
+          workEmail:employeeData.workEmail,
+          mobile:employeeData.mobile,
+          dob:employeeData.dob,
+          gender:employeeData.gender,
+          address:employeeData.address,
+          city:employeeData.city,
+          state:employeeData.state,
+          qualification:employeeData.qualification,
+          experience:employeeData.experience,
+          maritalStatus:employeeData.maritalStatus,
+          password:employeeData.passwords||"",
           joiningDate:employeeData.joiningDate ? employeeData.joiningDate.split('T')[0]:"",
           // photo:employeeData.photo,
          }))
@@ -48,7 +57,7 @@ const EmployeeAdd = () => {
   },[employeeData]);
 
   const handleChange=(e)=>{
-    console.log(e);
+    // console.log(e);
     const {name,value}=e.target  
     setData({...data, [name]:value})
   }
@@ -62,19 +71,23 @@ const EmployeeAdd = () => {
    
   const onSubmit = async (e) => {
     e.preventDefault(); 
+    // console.log(data);
+    // return;
     const formData=new FormData()
     formData.append("name",data.name)
     formData.append("email",data.email)
-    formData.append("password",data.password)
+    formData.append("workEmail",data.workEmail)
     formData.append("mobile",data.mobile)
-    formData.append("role",data.role)
-    formData.append("department",data.department)
-    formData.append("designation",data.designation)
-    formData.append("salary",data.salary)
-    formData.append("joiningDate",data.joiningDate)
+    formData.append("dob",data.dob) 
+    formData.append("gender",data.gender)
+    formData.append("address",data.address)
+    formData.append("city",data.city)
+    formData.append("state",data.state)
+    formData.append("qualification",data.qualification)
+    formData.append("experience",data.experience)
+    formData.append("maritalStatus",data.maritalStatus)
+    formData.append("password",data.password)
     formData.append("photo",data.photo)
-
-
     if (employeeData) {
         const id=employeeData._id;
       const result = await employeeEdit({id,formData}).unwrap();
@@ -95,8 +108,6 @@ const EmployeeAdd = () => {
       <h2 className="text-2xl font-bold mb-4 text-center">{employeeData ? 'Edit Employee' : 'Add Employee'}</h2>
       <form onSubmit={onSubmit} className="space-y-4">
         {/* Email & Role */}
-    
-
         {/* Name, Phone */}
         <div className="flex gap-10">
           <div className="w-1/2">
@@ -111,52 +122,83 @@ const EmployeeAdd = () => {
             />
           </div>
         </div>
-
-
         <div className="flex gap-10">
           <div className="w-1/2">
           <label className="block text-sm font-medium text-gray-700">Email</label>
-            <input type="text"   onChange={handleChange} name='email' value={data.email} className="mt-1 block w-full border border-gray-300 rounded-md p-2" maxLength={20} minLength={3} />
+            <input type="email"   onChange={handleChange} name='email' value={data.email} className="mt-1 block w-full border border-gray-300 rounded-md p-2" maxLength={50} minLength={3} />
           </div>
-          <div className="w-1/2">
 
-  
+
+          <div className="w-1/2">
+          <label className="block text-sm font-medium text-gray-700">Work Email</label>
+            <input type="email"   onChange={handleChange} name='workEmail' value={data.workEmail} className="mt-1 block w-full border border-gray-300 rounded-md p-2" maxLength={50} minLength={3} />
+          </div>
+
+          {/* <div className="w-1/2">
             <label className="block text-sm font-medium text-gray-700">Role</label>
             <select onChange={handleChange} name='role' value={data.role} className="mt-1 w-full border border-gray-300 rounded-md p-2 bg-white">
               <option value="">Select Role</option>
               <option value="employee">Employee</option>
               <option value="admin">Admin</option>
             </select>
-     
-          </div>
+          </div> */}
         </div>
-
-
-
         {/* Department, Designation */}
         <div className="flex gap-10">
           <div className="w-1/2">
-            <label className="block text-sm font-medium text-gray-700">Department</label>
-            <input type="text" onChange={handleChange} value={data.department} name='department' className="mt-1 block w-full border border-gray-300 rounded-md p-2" required maxLength={15} minLength={10} />
+            <label className="block text-sm font-medium text-gray-700">DOB</label>
+            <input type="Date" onChange={handleChange} value={data.dob} name='dob' className="mt-1 block w-full border border-gray-300 rounded-md p-2" required maxLength={15} minLength={10} />
           </div>
           <div className="w-1/2">
-            <label className="block text-sm font-medium text-gray-700">Designation</label>
-            <input type="text"onChange={handleChange} name='designation' value={data.designation} className="mt-1 block w-full border border-gray-300 rounded-md p-2"  required maxLength={15} minLength={5}/>
+          <label className="block text-sm font-medium text-gray-700">Gender</label>
+            <select onChange={handleChange} name='gender' value={data.role} className="mt-1 w-full border border-gray-300 rounded-md p-2 bg-white">
+              <option value="">Select Role</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">other</option>
+            </select>
           </div>
         </div>
 
         {/* Salary, Joining Date */}
         <div className="flex gap-10">
           <div className="w-1/2">
-            <label className="block text-sm font-medium text-gray-700">Salary</label>
-            <input type="number" onChange={handleChange} value={data.salary} name='salary' className="mt-1 block w-full border border-gray-300 rounded-md p-2" />
+            <label className="block text-sm font-medium text-gray-700">Address</label>
+            <input type="text" onChange={handleChange} value={data.address} name='address' className="mt-1 block w-full border border-gray-300 rounded-md p-2" />
           </div>
           <div className="w-1/2">
-            <label className="block text-sm font-medium text-gray-700">Joining Date</label>
-            <input type="date" onChange={handleChange} name='joiningDate' value={data.joiningDate} className="mt-1 block w-full border border-gray-300 rounded-md p-2" />
+            <label className="block text-sm font-medium text-gray-700">Country</label>
+            <input type="text" onChange={handleChange} name='city' value={data.city} className="mt-1 block w-full border border-gray-300 rounded-md p-2" />
           </div>
         </div>
 
+        <div className="flex gap-10">
+          <div className="w-1/2">
+            <label className="block text-sm font-medium text-gray-700">State</label>
+            <input type="text" onChange={handleChange} value={data.state} name='state' className="mt-1 block w-full border border-gray-300 rounded-md p-2" />
+          </div>
+          <div className="w-1/2">
+            <label className="block text-sm font-medium text-gray-700">Qualification</label>
+            <input type="text" onChange={handleChange} name='qualification' value={data.qualification} className="mt-1 block w-full border border-gray-300 rounded-md p-2" />
+          </div>
+        </div>
+
+        <div className="flex gap-10">
+          <div className="w-1/2">
+            <label className="block text-sm font-medium text-gray-700">Experience</label>
+            <input type="number" onChange={handleChange} value={data.experience} name='experience' className="mt-1 block w-full border border-gray-300 rounded-md p-2" />
+          </div>
+            <div className="w-1/2">
+              <label className="block text-sm font-medium text-gray-700">Marital Status</label>
+              <select onChange={handleChange} value={data.maritalStatus} name="maritalStatus" className='mt-1 block w-full border border-gray-300 rounded-md p-2'>
+              <option value="">Select Merital Status</option>
+              <option value="married">Married</option>
+              <option value="unMarried">UnMarried</option>
+              </select>
+            </div>
+        </div>
+     
+     
         {/* Password, Profile Image */}
         <div className="flex gap-10">
           <div className="w-1/2">

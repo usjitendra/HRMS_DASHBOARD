@@ -6,7 +6,7 @@ const Employee = () => {
    const navigate=useNavigate();
   const {data,isLoading,error}=useGetAllEmployeeQuery()
 
-  console.log(data);
+  // console.log(data);
 
   //---------  table header define -----------///
   const columns = [
@@ -36,8 +36,6 @@ const Employee = () => {
   }
   //  ----action------- // 
   
-
-
   return (
     <div>
            {isLoading ? (
@@ -54,7 +52,6 @@ const Employee = () => {
         </button>
       </div>
         <TableComponent columns={columns} data={tableData} itemsPerPage={10} />
-
         </div>
       )}     
     </div>

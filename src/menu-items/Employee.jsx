@@ -2,6 +2,11 @@
 import { LoginOutlined, ProfileOutlined } from '@ant-design/icons';
 import { IoPersonAddSharp } from "react-icons/io5"
 import { FaList } from "react-icons/fa";
+// import { title } from 'process';
+// import { type } from 'os';
+import { icon } from '@fortawesome/fontawesome-svg-core';
+import { IoBusinessSharp } from 'react-icons/io5';
+import { MdPolicy } from 'react-icons/md';
 
 // icons
 const icons = {
@@ -30,8 +35,28 @@ const Employeepages = {
       type:"item",
       url:"employee/add",
       icon:IoPersonAddSharp
+    },
+    {
+      id:'employee',
+      title:"Employee Attendance",
+      type:"item",
+      url:"employee/attendance",
+      icon:IoPersonAddSharp
+    },
+    {
+      id:'employee',
+      title:"Work Type",
+      type:"item",
+      url:"employee/work/type",
+      icon:IoBusinessSharp
+    },
+    {
+      id:'employee',
+      title:"Policy",
+      type:"item",
+      url:"employee/policy",
+      icon:MdPolicy
     }
-
 
   ]
 };

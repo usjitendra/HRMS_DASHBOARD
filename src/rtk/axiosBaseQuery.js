@@ -10,7 +10,6 @@ export const axiosInstance = axios.create({
   withCredentials: true, 
 });
 
-
 const axiosBaseQuery = async ({ url, method, data }) => {
   try {
     const response = await axiosInstance({
@@ -25,16 +24,11 @@ const axiosBaseQuery = async ({ url, method, data }) => {
     if (response?.data?.message) {
       toast.success(response.data.message);
     }
-
-
-    
-
     return { data: method === "GET" ? response?.data?.data : response?.data };
+    
   } catch (error) {
     // console.error("Request Error:", error);
-
-    const errorMessage =
-      error.response?.data?.message || error.message || "Something went wrong";
+    const errorMessage = error.response?.data?.message || error.message || "Something went wrong";
     toast.error(errorMessage);
     return {
       error: {

@@ -4,12 +4,12 @@ import { useIsLoginQuery } from '../rtk/login';
 
 const ProtectedRoute = () => {
   
-  console.log("mai chala ");
+  // console.log("mai chala ");
 
   const {data,isLoading}=useIsLoginQuery()
   const navigate=useNavigate()
 
-  console.log(data);
+  // console.log(data);
   
 
   useEffect(()=>{

@@ -14,7 +14,6 @@ export const employeeDetailApi = createApi({
             }),
             providesTags: ["employee"], 
         }), 
-
         addEmployee:builder.mutation({
             query:(formData)=>(
                 {
@@ -50,8 +49,17 @@ export const employeeDetailApi = createApi({
                 data
             }),
             invalidatesTags:["employee"],
-        })
-          
+        }),
+        getOneEmployee: builder.query({
+            query: ({id}) => (
+                //  console.log("rtk",id),
+                 
+                {
+                url: `/employee/get/${id}`,
+                method: "GET",
+            }),
+            providesTags: ["employee"], 
+        }), 
     }),
 });
 
@@ -60,4 +68,5 @@ export const {useGetAllEmployeeQuery,
     useDeleteEmployeeMutation,
     useEmployeeEditMutation,
     useEmployeeLoginMutation,
+    useGetOneEmployeeQuery,
 } = employeeDetailApi;

@@ -17,8 +17,7 @@ export default function App() {
   return (
     <Provider store={store}>
     <ThemeCustomization>
-       <Toaster/>
-       
+       <Toaster/> 
       <ScrollTop>
         <RouterProvider router={router} />
       </ScrollTop>

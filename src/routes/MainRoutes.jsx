@@ -5,8 +5,16 @@ import DashboardLayout from "layout/Dashboard";
 import Employee from "../pages/Employee/Employee";
 import EmployeeAdd from "../pages/Employee/EmployeeAdd.jsx";
 import EmployeeList from "../pages/Employee/EmployeeList.jsx";
+import EmployeeAttendance from "../pages/Employee/EployeeAttendance.jsx";
 import ProtectedRoute from "../auth/ProtectedRoute.jsx";
-
+import EmployeeDetail from "../pages/Employee/EmployeeDetail.jsx"
+import EmployeeWorck from "../pages/Employee/viewProfile/WorkAddForm.jsx"
+import BankAdd from "../pages/Employee/viewProfile/BankAdd.jsx"
+import EmployeeWork from "../pages/Employee/EmployeeWork.jsx";
+import Policy from "../pages/Employee/Policy/Policy.jsx";
+import AddPolicy from "../pages/Employee/Policy/AddPolicy.jsx";
+import { element } from "prop-types";
+import path from "path";
 // Lazy loaded components
 const DashboardDefault = Loadable(lazy(() => import("pages/dashboard/default")));
 const Color = Loadable(lazy(() => import("pages/component-overview/color")));
@@ -39,6 +47,13 @@ const MainRoutes = {
         { path: "", element: <Employee /> },
         { path: "list", element: <EmployeeList /> },
         { path: "add", element: <EmployeeAdd /> },
+        {path:"attendance", element:<EmployeeAttendance/>},
+        {path:"details/:id",element:<EmployeeDetail/>},
+        {path:"work/:id",element:<EmployeeWorck/>},
+        {path:"bank/:id",element:<BankAdd/>}, 
+        {path:"work/type",element:<EmployeeWork/>},
+        {path:"policy",element:<Policy/>},
+        {path:"add/policy",element:<AddPolicy/>}
       ],
     },
     {

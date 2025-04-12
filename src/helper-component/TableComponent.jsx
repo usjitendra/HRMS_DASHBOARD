@@ -7,16 +7,14 @@ import theme from "@material-tailwind/react/theme";
 const TableComponent = ({ columns, data, title, itemsPerPage = 10 }) => {
   const [currentPage, setCurrentPage] = useState(1);
    const navigator=useNavigate(); 
-  const totalPages = Math.ceil(data.length / itemsPerPage);
+  const totalPages =Math.ceil(data.length / itemsPerPage);
 
   // 🟢 Get paginated data
   const paginatedData = data.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
-   const onAddEmployee=()=>{
-        navigator("/employee")
-   }
+
 
   return (
     <div className="w-full p-2  shadow-md bg-white">
